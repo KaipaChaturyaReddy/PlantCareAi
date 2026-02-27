@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>Live Dashboard</h2>
+
+<table>
+<tr>
+<th>ID</th>
+<th>Disease</th>
+<th>Confidence</th>
+<th>Pest</th>
+<th>Soil</th>
+<th>Weather</th>
+<th>Yield</th>
+<th>Hash</th>
+<th>Time</th>
+</tr>
+
+{% for row in data %}
+<tr>
+{% for item in row %}
+<td>{{ item }}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+
+</table>
+
+<br><br>
+<a href="/"><button>Back</button></a>
+
+</body>
+</html>

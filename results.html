@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>AI Analysis Result</h2>
+
+<div class="card">
+    <p><b>Disease:</b> {{ disease }}</p>
+    <p><b>Confidence:</b> {{ severity }}%</p>
+    <p><b>Pest:</b> {{ pest }}</p>
+    <p><b>Soil Moisture:</b> {{ soil }}%</p>
+    <p><b>Weather Risk:</b> {{ weather }}</p>
+    <p><b>Yield Prediction:</b> {{ yield_pred }}%</p>
+    <p><b>Blockchain Hash:</b></p>
+    <small>{{ hash_val }}</small>
+    <br><br>
+    <img src="/static/ndvi.png" width="350">
+    <br><br>
+    <a href="/"><button>Analyze Again</button></a>
+    <a href="/dashboard"><button>Dashboard</button></a>
+</div>
+
+</body>
+</html>

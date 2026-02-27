@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CropGuard AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>CropGuard AI - Live Detection</h2>
+
+<video id="video" width="350" autoplay></video>
+<br><br>
+<button onclick="capture()">Capture & Analyze</button>
+
+<form id="uploadForm" method="POST" action="/predict">
+    <input type="hidden" name="image_data" id="image_data">
+</form>
+
+<script>
+const video = document.getElementById('video');
+navigator.mediaDevices.getUserMedia({ video: true })
+.then(stream => video.srcObject = stream);
+
+function capture(){
+    const canvas = document.createElement('canvas');
+    canvas.width = 224;
+    canvas.height = 224;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video,0,0,224,224);
+    const dataURL = canvas.toDataURL('image/jpeg');
+    document.getElementById('image_data').value = dataURL;
+    document.getElementById('uploadForm').submit();
+}
+</script>
+
+</body>
+</html>
